@@ -1,0 +1,19 @@
+body {
+  background: hsl(230, 17%, 14%);
+}
+#wrapper {
+  background: hsl(232, 19%, 15%);
+}
+header hr {
+  border-top: 1px solid hsl(228, 34%, 66%);
+}
+header span {
+  color: hsl(228, 34%, 66%);
+}
+.box,.box-details {
+  background: hsl(228, 28%, 20%);
+  color: hsl(228, 34%, 66%);
+}
+.views, .counter span:first-child,h1,h2{
+  color: hsl(0, 0%, 100%);
+}
