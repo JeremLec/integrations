@@ -1,0 +1,28 @@
+html{
+  box-sizing: border-box;
+}
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+body{
+  background: hsl(180, 52%, 96%);
+  font-size: 15px;
+  margin: 0;
+}
+header {
+  background: url(../images/bg-header-mobile.svg) hsl(180, 29%, 50%);
+  background-size: cover;
+  height: 156px;
+  margin-bottom: 55px; /*TODO: upgrade this state*/ 
+}
+main {
+  padding: 0 24px;
+}
+.job-box {
+  border-left: 5px solid hsl(180, 29%, 50%);
+  border-radius: 5px;
+  height: 257px;
+}
+.job-box > div {
+  height: 50%;
+}
