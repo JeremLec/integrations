@@ -24,6 +24,7 @@ main{
   border-radius: 5px;
   padding: 24px;
   position: relative;
+  margin-bottom: 1em;
 }
 .job-box > img{
   width: 50px;
