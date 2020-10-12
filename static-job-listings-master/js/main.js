@@ -55,6 +55,8 @@ function dataJob(job){
     let div = document.createElement('div');
     const logo = obj['logo'];
     const company = obj['company'];
+    const newBadge = obj['new'];
+    const featuredBadge = obj['featured'];
     const position = obj['position'];
     const postedAt = obj['postedAt'];
     const contract = obj['contract'];
@@ -65,9 +67,23 @@ function dataJob(job){
     let tools = obj['tools'];
     
     let job = new Job(logo,company,position,postedAt,contract,location,role,level);
+
     let structure = job.structure();
+    console.log(newBadge);
+    
 
     div.innerHTML = structure;
+    if(newBadge === true){
+      let span = document.createElement('span')
+      span.classList.add('new');
+      div.querySelector('.name').appendChild(span);
+    }
+    if(featuredBadge === true){
+      let span = document.createElement('span')
+      span.classList.add('featured');
+      div.querySelector('.name').appendChild(span);
+    }
+
     languages.forEach(function(item){
       let span = document.createElement('span');
       span.classList.add('category');

@@ -34,7 +34,6 @@ main{
 }
 .name{
   margin: 1em 0;
-  /* font-size: 12px; */
 }
 .job{
   font-weight: 700;
@@ -47,20 +46,26 @@ main{
 .new{
   color: white;
   background: hsl(180, 29%, 50%);
-  border-radius: 10px;
-  text-align: center;
-  padding: 5px;
+  border-radius: 2em;
+  padding: 6px 12px;
   font-weight: 700;
-  /* font-size: 12px; */
+  font-size: 12px;
+  margin-left: 0.5em;
+}
+.new::after {
+  content: "NEW!";
 }
 .featured {
   color: white;
   background: hsl(180, 14%, 20%);
-  border-radius: 10px;
-  text-align: center;
-  padding: 5px;
+  border-radius: 2em;
+  padding: 6px 12px;
   font-weight: 700;
-  /* font-size: 12px; */
+  font-size: 12px;
+  margin-left: 0.5em;
+}
+.featured::after {
+  content: "FEATURED";
 }
 .details{
   color: hsl(180, 8%, 52%);
@@ -76,6 +81,7 @@ main{
   padding: calc((32px - 15px) / 2);
   border-radius: 5px;
   margin: 0 15px 15px 0;
+  font-size: 12px;
 }
 .categories{
   display: flex;
