@@ -14,16 +14,18 @@ class Job {
   structure(){
     return `
       <div class="job-box">
-        <img src="${this.logo}" alt="${this.company}">
-        <div>
-          <div class="name">
-            <span class="enterprise">${this.company}</span>
-          </div>
+        <div class="informations">
+          <img src="${this.logo}" alt="${this.company}" class="logo">
           <div>
-            <span class="job">${this.position}</span>
-          </div>
-          <div class="details">
-            <span>${this.postedAt} • ${this.contract} • ${this.location}</span>
+            <div class="name">
+              <span class="enterprise">${this.company}</span>
+            </div>
+            <div>
+              <span class="job">${this.position}</span>
+            </div>
+            <div class="details">
+              <span>${this.postedAt} • ${this.contract} • ${this.location}</span>
+            </div>
           </div>
         </div>
         <div class="categories">
@@ -99,4 +101,43 @@ function dataJob(job){
 
     document.querySelector('main').appendChild(div);
   })
+}
+
+let search = document.querySelector('#search');
+let list  = document.querySelector('#list');
+let items = [];
+
+search.addEventListener('keypress', function(e){
+  if(e.key === 'Enter'){
+    let val = search.value;
+    if(val !== ''){
+      if (items.indexOf(val) >= 0){
+        alert('Tag name is a duplicate');
+      } else {
+        items.push(val);
+        render();
+        search.value = '';
+        search.focus();
+      }
+    } else {
+      alert('Please type a tag Name');
+    }
+  }
+});
+
+function render(){
+  list.innerHTML = '';
+  items.map((item,index) => {
+    list.innerHTML += `<li><span>${item}</span><a href="javascript: remove(${index})"><span>x</span></a></li>`;
+  });
+}
+
+function remove(i){
+  items = items.filter(item => items.indexOf(item) != i);
+  render();
+}
+
+window.onload = function(){
+  render();
+  search.focus();
 }
