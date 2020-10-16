@@ -114,7 +114,9 @@ search.addEventListener('keypress', function(e){
       if (items.indexOf(val) >= 0){
         alert('Tag name is a duplicate');
       } else {
+        // console.log(document.querySelectorAll('.job-box'));
         items.push(val);
+        filter();
         render();
         search.value = '';
         search.focus();
@@ -144,6 +146,10 @@ function allRemoved(){
   } else {
     alert("No items");
   }
+}
+
+function filter(){
+  
 }
 
 window.onload = function(){
