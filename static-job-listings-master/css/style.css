@@ -107,34 +107,33 @@ main{
   display: inline-block;
   background: hsl(180, 52%, 96%);
   color: hsl(180, 29%, 50%);
-  /* padding: 3px 5px 3px 10px; */
+  font-weight: 700;
   border-radius: 5px;
-  margin-right: 5px;
+  margin-right: 17px;
   margin-bottom: 5px;
-}
-
-#search-box ul > li > span{
-  padding: 3px 0px 3px 10px;
+  height: 30px;
+  font-size: 12px;
+  padding-left: 10px;
 }
 
 #search-box ul > li > a{
   color: white;
   text-decoration: none;
-  margin-left: 5px;
-  /* font-size: 10px; */
-  /* background: #333; */
+  margin-left: 10px;
   background: hsl(180, 29%, 50%);
-  width: 15px;
-  height: 15px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  /* border-radius: 50%; */
-  display: inline-flex;
-  /* text-align: center; */
-  /* align-items: center; */
-  /* justify-content: center; */
+  display:inline-block;
+  width: 30px;
+  height: inherit;
+  padding: 10px;
+  text-align: center;
+  position: relative;
 }
 
+#search-box ul > li > a:hover {
+  background:hsl(180, 14%, 20%);
+}
 
 #search-box input {
   border: 0px;

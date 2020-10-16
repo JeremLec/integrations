@@ -128,7 +128,7 @@ search.addEventListener('keypress', function(e){
 function render(){
   list.innerHTML = '';
   items.map((item,index) => {
-    list.innerHTML += `<li><span>${item}</span><a href="javascript: remove(${index})"><span>x</span></a></li>`;
+    list.innerHTML += `<li>${item}<a href="javascript: remove(${index})"><span>x</span></a></li>`;
   });
 }
 
