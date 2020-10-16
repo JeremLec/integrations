@@ -128,13 +128,22 @@ search.addEventListener('keypress', function(e){
 function render(){
   list.innerHTML = '';
   items.map((item,index) => {
-    list.innerHTML += `<li>${item}<a href="javascript: remove(${index})"><span>x</span></a></li>`;
+    list.innerHTML += `<li class="tags">${item}<a href="javascript: remove(${index})"><span>x</span></a></li>`;
   });
 }
 
 function remove(i){
   items = items.filter(item => items.indexOf(item) != i);
   render();
+}
+
+function allRemoved(){
+  if(items.length !== 0){
+    items = [];
+    list.innerHTML = "";
+  } else {
+    alert("No items");
+  }
 }
 
 window.onload = function(){

@@ -94,6 +94,13 @@ main{
   padding: 15px 15px 10px 15px;
   border-radius: 15px;
   margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#search-box a{
+  color: hsl(180, 29%, 50%);
 }
 
 #search-box ul{
