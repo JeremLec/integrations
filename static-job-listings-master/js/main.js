@@ -54,7 +54,6 @@ requete.send();
 function dataJob(job){
   // TODO: refacto function
   let listJobs = JSON.parse(job);
-  // console.log(listJobs);
   listJobs.map(obj => {
     let div = document.createElement('div');
     const id = obj['id'];
@@ -129,7 +128,6 @@ search.addEventListener('keypress', function(e){
 });
 
 
-
 function render(){
   list.innerHTML = '';
   items.map((item,index) => {
@@ -146,10 +144,32 @@ function removeAttributeStyleAll(){
   });
 }
 
-
+// TODO: Refacto
+// TODO: Gèrer les majuscules et minuscules dans la searchbox
 function remove(i){
   items = items.filter(item => items.indexOf(item) != i);
   render();
+  let tags = document.querySelectorAll('.tags');
+  let listObjJobs = simplifyObjJob();
+  let arrayId = [];
+  listObjJobs.map(jobBox => {
+    tags.forEach(tag => {
+      let val = tag.innerText.slice(0,-1);
+      if(jobBox['categories'].indexOf(val) != -1){
+        arrayId.push(jobBox['id']);
+      }
+    })
+  })
+  let listJobsBox = document.querySelectorAll('.job-box');
+  listJobsBox.forEach(el => {
+    arrayId.forEach(element => {
+      if(element === parseInt(el.getAttribute('id'))){ //TODO: Gèrer si il y a déjà des display:none hors tags affichés
+        if (el.getAttribute('style')){
+          el.removeAttribute('style');
+        }
+      }
+    })
+  })
 }
 
 function allRemoved(){
@@ -175,7 +195,6 @@ function filter(search){
   });
   arrayId = new Set(arrayId);
   arrayId = [...arrayId];
-
   let listJobsBox = document.querySelectorAll('.job-box');
   listJobsBox.forEach(el => {
     arrayId.forEach(element => {
@@ -184,6 +203,7 @@ function filter(search){
       }
     })
   })
+
 }
 
 function simplifyObjJob (){
