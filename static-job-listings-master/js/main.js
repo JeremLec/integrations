@@ -1,5 +1,6 @@
 class Job {
-  constructor(logo,company,position,postedAt,contract,location,role,level){
+  constructor(id,logo,company,position,postedAt,contract,location,role,level){
+    this.id = id;
     this.logo = logo;
     this.company = company;
     this.position = position;
@@ -13,7 +14,7 @@ class Job {
   // TODO: improve structure 
   structure(){
     return `
-      <div class="job-box">
+      <div class="job-box" id="${this.id}">
         <div class="informations">
           <img src="${this.logo}" alt="${this.company}" class="logo">
           <div>
@@ -43,18 +44,20 @@ requete.open('GET', '../data.json');
 requete.onload = () => {
   if (requete.status == 200) {
     dataJob(requete.response);
+    filter
   } else {
     console.log('error : ' + requete.status);
   }
 }
 requete.send();
 
-
 function dataJob(job){
   // TODO: refacto function
   let listJobs = JSON.parse(job);
+  // console.log(listJobs);
   listJobs.map(obj => {
     let div = document.createElement('div');
+    const id = obj['id'];
     const logo = obj['logo'];
     const company = obj['company'];
     const newBadge = obj['new'];
@@ -68,12 +71,11 @@ function dataJob(job){
     let languages = obj['languages'];
     let tools = obj['tools'];
     
-    let job = new Job(logo,company,position,postedAt,contract,location,role,level);
+    let job = new Job(id,logo,company,position,postedAt,contract,location,role,level);
 
     let structure = job.structure();
-    console.log(newBadge);
-    
-
+ 
+  
     div.innerHTML = structure;
     if(newBadge === true){
       let span = document.createElement('span')
@@ -114,9 +116,8 @@ search.addEventListener('keypress', function(e){
       if (items.indexOf(val) >= 0){
         alert('Tag name is a duplicate');
       } else {
-        // console.log(document.querySelectorAll('.job-box'));
         items.push(val);
-        filter();
+        filter(items);
         render();
         search.value = '';
         search.focus();
@@ -127,12 +128,24 @@ search.addEventListener('keypress', function(e){
   }
 });
 
+
+
 function render(){
   list.innerHTML = '';
   items.map((item,index) => {
     list.innerHTML += `<li class="tags">${item}<a href="javascript: remove(${index})"><span>x</span></a></li>`;
   });
 }
+
+function removeAttributeStyleAll(){
+  let listJobsBox = document.querySelectorAll('.job-box');
+  listJobsBox.forEach(item => {
+    if(item.getAttribute('style')){
+      item.removeAttribute('style');
+    }
+  });
+}
+
 
 function remove(i){
   items = items.filter(item => items.indexOf(item) != i);
@@ -143,14 +156,49 @@ function allRemoved(){
   if(items.length !== 0){
     items = [];
     list.innerHTML = "";
+    removeAttributeStyleAll();
   } else {
     alert("No items");
   }
 }
 
-function filter(){
-  
+
+function filter(search){
+  let listObjJobs = simplifyObjJob();
+  let arrayId = []
+  listObjJobs.map(job => {
+    search.forEach(item => {
+      if(job['categories'].indexOf(item) === -1){
+        arrayId.push(job['id']);
+      }
+    })
+  });
+  arrayId = new Set(arrayId);
+  arrayId = [...arrayId];
+
+  let listJobsBox = document.querySelectorAll('.job-box');
+  listJobsBox.forEach(el => {
+    arrayId.forEach(element => {
+      if (element === parseInt(el.getAttribute('id'))){
+        el.style.display = "none";
+      }
+    })
+  })
 }
+
+function simplifyObjJob (){
+  let data = JSON.parse(requete.response);
+  let listData = data.map(job => {
+    let obj = {};
+    let id = job['id'];
+    let categories = [...job['languages'],job['level'],job['role']];
+    obj.id = id;
+    obj.categories = categories;
+    return obj;
+  })
+  return listData;
+}
+
 
 window.onload = function(){
   render();
