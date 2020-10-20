@@ -83,6 +83,12 @@ main{
   margin: 0 15px 15px 0;
   font-size: 12px;
 }
+
+.category:hover {
+    background: hsl(180, 29%, 50%);
+    color: hsl(180, 52%, 96%);
+}
+
 .categories{
   display: flex;
   flex-wrap: wrap;
@@ -92,7 +98,7 @@ main{
 #search-box{
   background: white;
   padding: 15px 15px 10px 15px;
-  border-radius: 15px;
+  border-radius: 5px;
   margin-bottom: 1em;
   display: flex;
   justify-content: space-between;
@@ -116,7 +122,7 @@ main{
   display: inline-block;
   background: hsl(180, 52%, 96%);
   color: hsl(180, 29%, 50%);
-  font-weight: 700;
+  font-weight: 500;
   border-radius: 5px;
   margin-right: 17px;
   margin-bottom: 5px;
@@ -135,9 +141,9 @@ main{
   display:inline-block;
   width: 30px;
   height: inherit;
-  padding: 10px;
   text-align: center;
   position: relative;
+  font-size: 25px;
 }
 
 #search-box ul > li > a:hover {
@@ -153,6 +159,10 @@ main{
 
 
 @media screen and (min-width: 1440px){
+  header{
+    background: url('../images/bg-header-desktop.svg') hsl(180, 29%, 50%);
+  }
+
   .job-box, .informations{
     display: flex;
     justify-content: space-between;
