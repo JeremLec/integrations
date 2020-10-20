@@ -160,16 +160,24 @@ function remove(i){
       }
     })
   })
+  console.log(arrayId);
+  console.log(arrayId.length);
   let listJobsBox = document.querySelectorAll('.job-box');
   listJobsBox.forEach(el => {
-    arrayId.forEach(element => {
-      if(element === parseInt(el.getAttribute('id'))){ //TODO: Gèrer si il y a déjà des display:none hors tags affichés
-        if (el.getAttribute('style')){
-          el.removeAttribute('style');
-        }
+    if (arrayId.length === 0) {
+      if(el.getAttribute('style')){
+        el.removeAttribute('style');
       }
-    })
-  })
+    } else {
+      arrayId.forEach(element => {
+        if(element === parseInt(el.getAttribute('id'))){
+          if (el.getAttribute('style')){
+            el.removeAttribute('style');
+          }
+        }
+      });
+    }
+  });
 }
 
 function allRemoved(){
