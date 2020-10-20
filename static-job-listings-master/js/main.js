@@ -145,7 +145,6 @@ function removeAttributeStyleAll(){
 }
 
 // TODO: Refacto
-// TODO: Gèrer les majuscules et minuscules dans la searchbox
 function remove(i){
   items = items.filter(item => items.indexOf(item) != i);
   render();
@@ -155,13 +154,12 @@ function remove(i){
   listObjJobs.map(jobBox => {
     tags.forEach(tag => {
       let val = tag.innerText.slice(0,-1);
-      if(jobBox['categories'].indexOf(val) != -1){
+      if(jobBox['categories'].indexOf(val.toLowerCase()) != -1){
         arrayId.push(jobBox['id']);
       }
     })
   })
-  console.log(arrayId);
-  console.log(arrayId.length);
+
   let listJobsBox = document.querySelectorAll('.job-box');
   listJobsBox.forEach(el => {
     if (arrayId.length === 0) {
@@ -196,7 +194,7 @@ function filter(search){
   let arrayId = []
   listObjJobs.map(job => {
     search.forEach(item => {
-      if(job['categories'].indexOf(item) === -1){
+      if(job['categories'].indexOf(item.toLowerCase()) === -1){
         arrayId.push(job['id']);
       }
     })
@@ -219,7 +217,8 @@ function simplifyObjJob (){
   let listData = data.map(job => {
     let obj = {};
     let id = job['id'];
-    let categories = [...job['languages'],job['level'],job['role']];
+    let categories = [...job['languages'],job['level'],job['role'],...job['tools']];
+    categories = categories.map(category => category.toLowerCase());
     obj.id = id;
     obj.categories = categories;
     return obj;
