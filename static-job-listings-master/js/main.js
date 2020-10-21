@@ -1,3 +1,19 @@
+let search = document.querySelector('#search');
+let list  = document.querySelector('#list');
+let items = [];
+let requete = new XMLHttpRequest();
+
+requete.open('GET', '../data.json');
+requete.onload = () => {
+  if (requete.status == 200) {
+    dataJob(requete.response);
+    filter
+  } else {
+    console.log('error : ' + requete.status);
+  }
+}
+requete.send();
+
 class Job {
   constructor(id,logo,company,position,postedAt,contract,location,role,level){
     this.id = id;
@@ -37,19 +53,6 @@ class Job {
     `;
   }
 }
-
-// TODO: tester avec Fetch()
-let requete = new XMLHttpRequest();
-requete.open('GET', '../data.json');
-requete.onload = () => {
-  if (requete.status == 200) {
-    dataJob(requete.response);
-    filter
-  } else {
-    console.log('error : ' + requete.status);
-  }
-}
-requete.send();
 
 function dataJob(job){
   // TODO: refacto function
@@ -104,30 +107,6 @@ function dataJob(job){
   })
 }
 
-let search = document.querySelector('#search');
-let list  = document.querySelector('#list');
-let items = [];
-
-search.addEventListener('keypress', function(e){
-  if(e.key === 'Enter'){
-    let val = search.value;
-    if(val !== ''){
-      if (items.indexOf(val) >= 0){
-        alert('Tag name is a duplicate');
-      } else {
-        items.push(val);
-        filter(items);
-        render();
-        search.value = '';
-        search.focus();
-      }
-    } else {
-      alert('Please type a tag Name');
-    }
-  }
-});
-
-
 function render(){
   list.innerHTML = '';
   items.map((item,index) => {
@@ -144,7 +123,6 @@ function removeAttributeStyleAll(){
   });
 }
 
-// TODO: Refacto
 function remove(i){
   items = items.filter(item => items.indexOf(item) != i);
   render();
@@ -188,7 +166,6 @@ function allRemoved(){
   }
 }
 
-
 function filter(search){
   let listObjJobs = simplifyObjJob();
   let arrayId = []
@@ -212,7 +189,7 @@ function filter(search){
 
 }
 
-function simplifyObjJob (){
+function simplifyObjJob(){
   let data = JSON.parse(requete.response);
   let listData = data.map(job => {
     let obj = {};
@@ -226,6 +203,24 @@ function simplifyObjJob (){
   return listData;
 }
 
+search.addEventListener('keypress', function(e){
+  if(e.key === 'Enter'){
+    let val = search.value;
+    if(val !== ''){
+      if (items.indexOf(val) >= 0){
+        alert('Tag name is a duplicate');
+      } else {
+        items.push(val);
+        filter(items);
+        render();
+        search.value = '';
+        search.focus();
+      }
+    } else {
+      alert('Please type a tag Name');
+    }
+  }
+});
 
 window.onload = function(){
   render();
