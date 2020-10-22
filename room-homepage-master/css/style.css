@@ -40,8 +40,8 @@ a {
 }
 
 header {
-  height: 45vh;
   background: url("../../images/mobile-image-hero-1.jpg");
+  height: 45vh;
   background-size: cover;
   position: relative;
   padding-top: 48px;
