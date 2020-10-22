@@ -66,6 +66,8 @@ header .header-slider {
 
 header .header-slider .header-slider-btn {
   display: block;
+  height: calc(24px/1.5);
+  width: calc(14px/1.5);
 }
 
 nav {
