@@ -107,37 +107,63 @@ nav ul {
   width: 70%;
 }
 
-section {
-  height: 55vh;
+.summary {
   padding: 73px 35px 74px 32px;
+  height: 55vh;
 }
 
-section .intro-title {
+.summary h1 {
   font-size: 25px;
+  letter-spacing: 0;
 }
 
-section .intro-text {
+.summary p {
   line-height: 2em;
   margin: 26px 0 55px 0;
+  color: #a1a1a1;
 }
 
-section .intro-link {
+.summary a {
   letter-spacing: 0.5em;
 }
 
-section .intro-link .intro-link-img {
+.summary a img {
+  margin-left: 45px;
+}
+
+.about {
+  padding: 61px 35px 61px 32px;
+  height: 45vh;
+}
+
+.about h1 {
+  font-size: 12px;
+  letter-spacing: 0.5em;
+}
+
+.about p {
+  line-height: 2em;
+  margin: 19px 0 0 0;
+  color: #a1a1a1;
+}
+
+.about a {
+  letter-spacing: 0.5em;
+}
+
+.about a img {
   margin-left: 45px;
 }
 
 .bloc-image {
-  height: 30vh;
-  background-size: cover;
   background: url("../../images/image-about-dark.jpg");
+  height: 27.5vh;
+  background-size: cover;
 }
 
 .bloc-image-1 {
-  height: 30vh;
-  background-size: cover;
   background: url("../../images/image-about-light.jpg");
+  height: 27.5vh;
+  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */
