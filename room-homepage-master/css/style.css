@@ -1,0 +1,88 @@
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Spartan", sans-serif;
+  font-size: 12px;
+}
+
+header {
+  height: 45vh;
+  background: url("../../images/desktop-image-hero-1.jpg");
+  background-size: cover;
+  position: relative;
+}
+
+header .header-slider {
+  background: black;
+  width: 112px;
+  height: 56px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header .header-slider .header-slider-btn {
+  display: block;
+}
+
+nav {
+  height: 110px;
+  font-weight: 600;
+  background: white;
+  padding: 0 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .nav-btn-close {
+  display: block;
+  text-decoration: none;
+  text-transform: none;
+  color: #a1a1a1;
+}
+
+nav ul {
+  height: inherit;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  width: 70%;
+}
+
+article {
+  height: 55vh;
+  background: lightblue;
+}
+/*# sourceMappingURL=style.css.map */
