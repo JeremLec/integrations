@@ -24,27 +24,11 @@ a {
   color: black;
 }
 
-.head {
-  height: 50px;
-  position: relative;
-}
-
-.head .menu {
-  position: absolute;
-  top: 0;
-  left: 24px;
-}
-
-.head .logo {
-  text-align: center;
-}
-
 header {
   background: url("../../images/mobile-image-hero-1.jpg");
   height: 45vh;
   background-size: cover;
   position: relative;
-  padding-top: 48px;
 }
 
 header .header-slider {
@@ -70,6 +54,21 @@ header .header-slider .header-slider-btn {
   width: calc(14px/1.5);
 }
 
+.head {
+  padding-top: 48px;
+}
+
+.logo {
+  text-align: center;
+}
+
+.hamburger {
+  position: absolute;
+  top: 0;
+  padding-top: 48px;
+  padding-left: 24px;
+}
+
 nav {
   height: 110px;
   font-weight: 600;
@@ -84,8 +83,9 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
-  top: -100px;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 nav .nav-btn-close {
@@ -173,5 +173,68 @@ nav ul {
   background: url("../../images/image-about-light.jpg");
   height: 27.5vh;
   background-size: cover;
+}
+
+@media screen and (min-width: 1440px) {
+  .container-1, .container-2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .container-1 {
+    height: 60vh;
+  }
+  .container-2 {
+    height: 40vh;
+  }
+  .bloc-image, .about, .bloc-image-1 {
+    width: 100%;
+    height: 100%;
+  }
+  .hamburger {
+    display: none;
+  }
+  .logo {
+    text-align: initial;
+    padding-left: 24px;
+  }
+  nav {
+    background: none;
+    width: 60%;
+  }
+  nav .nav-btn-close {
+    display: none;
+  }
+  nav a {
+    color: white;
+  }
+  nav ul {
+    margin: 0 0 0 114px;
+  }
+  .close {
+    display: block;
+  }
+  header {
+    background: url("../../images/desktop-image-hero-1.jpg");
+    height: auto;
+    background-size: cover;
+    width: 60vw;
+  }
+  header .header-slider {
+    right: -112px;
+  }
+  .summary {
+    padding: 121px 102px 154px 100px;
+    width: 40vw;
+  }
+  .summary h1 {
+    font-size: 30px;
+  }
+  .summary p {
+    margin: 26px 0 32px 0;
+  }
+  .about {
+    padding: 72px 49px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
