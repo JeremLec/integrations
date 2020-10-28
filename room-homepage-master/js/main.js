@@ -29,3 +29,30 @@ INIT : compteur = 0;
     - images[compteur]
 
  */
+
+const btnPrev = document.querySelector('#slider-prev');
+const btnNext = document.querySelector('#slider-next');
+
+let count = 0;
+
+btnPrev.addEventListener('click', ()=>{
+  console.log('prev!!!!');
+  if(count < images.length){
+    console.log(images[count]);
+    count += 1;
+  } else {
+    count = 0;
+    console.log(images[count]);
+  }
+});
+
+btnNext.addEventListener('click', ()=>{
+  console.log('next!!!!!');
+  if(count < images.length){
+    console.log(images[count]);
+    count -= 1;
+  } else {
+    count = 0;
+    console.log(images[count]);
+  }
+})
