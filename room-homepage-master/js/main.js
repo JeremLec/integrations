@@ -14,45 +14,53 @@ const images = ['../images/desktop-image-hero-1.jpg',
   '../images/desktop-image-hero-2.jpg',
   '../images/desktop-image-hero-3.jpg'];
 
-/*
--------------------------------
-ACTION : angle left clic event
--------------------------------
-INIT : compteur = 0;
- 
-- Vérifie le compteur d'images
-  - Si compteur < images.length alors :
-    - images[compteur]
-    - compteur += 1
-  - Si compteur = 3 alors :
-    - compteur -= 1
-    - images[compteur]
-
- */
-
+let count = 0;
 const btnPrev = document.querySelector('#slider-prev');
 const btnNext = document.querySelector('#slider-next');
-
-let count = 0;
-
+const slider = document.querySelector('header');
 btnPrev.addEventListener('click', ()=>{
-  console.log('prev!!!!');
-  if(count < images.length){
+  if (count <= images.length -1 && count > 0){
+    count -= 1;
     console.log(images[count]);
-    count += 1;
-  } else {
-    count = 0;
+    slider.style.backgroundImage = "url('"+images[count]+"')";
+  } else if (count == 0){
+    count = images.length - 1;
+    slider.style.backgroundImage = "url('"+images[count]+"')";
     console.log(images[count]);
   }
 });
-
 btnNext.addEventListener('click', ()=>{
-  console.log('next!!!!!');
-  if(count < images.length){
-    console.log(images[count]);
-    count -= 1;
-  } else {
+  if (count < images.length - 1){
+  count += 1;
+  console.log(images[count]);
+  slider.style.backgroundImage = "url('"+images[count]+"')";
+  } else if (count == images.length - 1) {
     count = 0;
     console.log(images[count]);
+    slider.style.backgroundImage = "url('"+images[count]+"')";
   }
-})
+});
+
+
+
+// btnPrev.addEventListener('click', ()=>{
+//   console.log('prev!!!!');
+//   if(count < images.length){
+//     console.log(images[count]);
+//     count += 1;
+//   } else {
+//     count = 0;
+//     console.log(images[count]);
+//   }
+// });
+
+// btnNext.addEventListener('click', ()=>{
+//   console.log('next!!!!!');
+//   if(count < images.length){
+//     console.log(images[count]);
+//     count -= 1;
+//   } else {
+//     count = 0;
+//     console.log(images[count]);
+//   }
+// })
