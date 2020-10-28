@@ -18,49 +18,22 @@ let count = 0;
 const btnPrev = document.querySelector('#slider-prev');
 const btnNext = document.querySelector('#slider-next');
 const slider = document.querySelector('header');
+
 btnPrev.addEventListener('click', ()=>{
   if (count <= images.length -1 && count > 0){
     count -= 1;
-    console.log(images[count]);
     slider.style.backgroundImage = "url('"+images[count]+"')";
   } else if (count == 0){
     count = images.length - 1;
     slider.style.backgroundImage = "url('"+images[count]+"')";
-    console.log(images[count]);
   }
 });
 btnNext.addEventListener('click', ()=>{
   if (count < images.length - 1){
   count += 1;
-  console.log(images[count]);
   slider.style.backgroundImage = "url('"+images[count]+"')";
   } else if (count == images.length - 1) {
     count = 0;
-    console.log(images[count]);
     slider.style.backgroundImage = "url('"+images[count]+"')";
   }
 });
-
-
-
-// btnPrev.addEventListener('click', ()=>{
-//   console.log('prev!!!!');
-//   if(count < images.length){
-//     console.log(images[count]);
-//     count += 1;
-//   } else {
-//     count = 0;
-//     console.log(images[count]);
-//   }
-// });
-
-// btnNext.addEventListener('click', ()=>{
-//   console.log('next!!!!!');
-//   if(count < images.length){
-//     console.log(images[count]);
-//     count -= 1;
-//   } else {
-//     count = 0;
-//     console.log(images[count]);
-//   }
-// })
